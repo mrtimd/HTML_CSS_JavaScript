@@ -1,0 +1,396 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML><HEAD><META 
+content="IE=5.0000" http-equiv="X-UA-Compatible">
+
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<SCRIPT>
+
+
+function initializer()
+
+{
+	hexidec=new makeArray(1);
+}
+
+
+
+function makeArray(n)
+
+{
+
+	this.length = n;
+
+	for (var i=1; i<=n;i++)
+
+		this[i]=0;
+
+	return this;
+
+}
+
+
+function getColor(form){
+
+
+	form.hexadecimal.value=document.bgColor;
+
+	rgb=form.hexadecimal.value;
+
+	c="0123456789abcdef";
+
+	red=c.indexOf(rgb.substring(1,2))*16+c.indexOf(rgb.substring(2,3));
+
+	green=c.indexOf(rgb.substring(3,4))*16+c.indexOf(rgb.substring(4,5));
+
+	blue=c.indexOf(rgb.substring(5,6))*16+c.indexOf(rgb.substring(6,7));
+
+	form.red.value=red;
+
+	form.green.value=green;
+
+	form.blue.value=blue;
+
+	form.hexadecimal.focus();
+
+	form.hexadecimal.select();
+
+}
+
+
+
+
+function getHex(form)
+
+{
+
+
+	var c="0123456789abcdef";
+
+
+	if ((form.red.value >255) || (form.green.value > 255) || (form.blue.value > 255))
+
+
+	{window.alert("What colors are you trying to convert? Value: 0 to 255!")}else
+
+
+
+	{
+
+
+	red=form.red.value;
+
+	green=form.green.value;
+
+	blue=form.blue.value;
+
+
+
+	with (Math) {
+
+		numOne=c.substring(floor(red/16),floor(red/16)+1);
+
+		numTwo=c.substring(red%16,(red%16)+1);
+
+		numThree=c.substring(floor(green/16),floor(green/16)+1);
+
+		numFour=c.substring(green%16,(green%16)+1);
+
+		numFive=c.substring(floor(blue/16),floor(blue/16)+1);
+
+		numSix=c.substring(blue%16,(blue%16)+1);	
+
+
+	}
+
+                  
+
+	form.hexadecimal.value="#"+numOne+""+numTwo+""+numThree+""+numFour+""+numFive+""+numSix;
+
+	form.red.focus();
+
+	form.red.select();
+
+	document.bgColor=form.hexadecimal.value;
+
+	form.hexadecimal.focus();
+
+	form.hexadecimal.select();
+
+
+}
+
+
+
+function getRGB(form)
+
+{
+
+	hex=form.hexadecimal.value;
+
+	pound=0;
+
+	for (i=0;i<7;i++){
+
+	hexidec[i]=hex.charAt(i);
+
+	temp=hexidec[i];
+
+	if (temp=='#')
+
+	pound++;
+
+	if ((temp=='a')||(temp=='A'))
+
+	hexidec[i]=10;
+
+	if ((temp=='b')||(temp=='B'))
+
+	hexidec[i]=11;
+
+	if ((temp=='c')||(temp=='C'))
+
+	hexidec[i]=12;
+
+	if ((temp=='d')||(temp=='D'))
+
+	hexidec[i]=13;
+
+	if ((temp=='e')||(temp=='E'))
+
+	hexidec[i]=14;
+
+	if ((temp=='f')||(temp=='F'))
+
+	hexidec[i]=15;
+
+
+	}
+
+
+	form.red.value=((hexidec[0+pound]*16)- -hexidec[1+pound]);
+
+	form.green.value=((hexidec[2+pound]*16)- -hexidec[3+pound]);
+
+	form.blue.value=((hexidec[4+pound]*16)- -hexidec[5+pound]);
+
+	document.bgColor=form.hexadecimal.value;
+
+
+
+}
+
+
+
+//-->
+
+
+
+</SCRIPT>
+ 
+<SCRIPT type="text/javascript">
+function drop(list){
+    var listElementStyle=document.getElementById(list).style;
+    if (listElementStyle.display=="none"){
+        listElementStyle.display="block";}
+        else {
+            listElementStyle.display="none";
+        }
+}
+</SCRIPT>
+ 
+<SCRIPT type="text/javascript">
+var sc_project=6343451; 
+var sc_invisible=1; 
+var sc_security="d3964d37"; 
+</SCRIPT>
+ <!--?php include('header.php'); ?--> <!-- main container starts --> 
+<META name="GENERATOR" content="MSHTML 11.00.9600.18500"></HEAD>
+<BODY>
+<DIV class="body_container">	 
+<DIV class="bg_body_bubble">&nbsp;</DIV><!--?php include('navigation.php'); ?-->
+		 <!-- right container starts -->	 
+<DIV class="flt_left" id="right_panel">
+<DIV><IMG height="22" alt="" src=""></DIV>
+<DIV class="inner_page_content"><!-- right box starts -->						 
+<DIV>
+<DIV class="inner_box" id="top">
+<DIV>
+<DIV class="flt_left">
+<H1><SPAN>Color Converter</SPAN></H1></DIV>
+<DIV class="flt_left gray_rounded">&nbsp;</DIV>
+<DIV class="clr"></DIV></DIV>
+<DIV class="inner_box_body inner_cont_padd"><!-- 22-04-11 -->								 
+<FORM>
+<DIV class="inner_box_cont" id="box">
+<DIV class="clr"></DIV>
+<DIV class="inner_list_boxextra ul_toppad">
+<DIV class="tab_format_container tab_border tab_width_fontviewer">
+<DIV class="tab_format tab_format_cont tab_border " style="padding: 10px; border: 1px solid rgb(177, 215, 3); border-image: none;">
+<DIV><B>Color:</B>&nbsp; 												<B><SELECT name="colors" onchange="document.bgColor = form.colors.options[colors.selectedIndex].value"><OPTION 
+  value="white" defaultselected="true">  White   </OPTION>																		
+  						 <OPTION value="aliceblue">      Alice Blue      </OPTION>       						
+  																								<OPTION value="antiquewhite">   Antique White   
+  </OPTION>																								 <OPTION value="aqua">   Aqua    </OPTION>
+  																								 <OPTION value="aquamarine">     Aquamarine      
+  </OPTION>																		 <OPTION value="azure">  Azure   </OPTION>						
+  																		 <OPTION value="beige">  Beige   </OPTION>																		
+  						 <OPTION value="bisque"> Bisque  </OPTION>																		 <OPTION 
+  value="black">  Black   </OPTION>																								 <OPTION value="blanchedalmond"> 
+  Blanchedalmond  </OPTION>																								 <OPTION value="blue">   Blue 
+     </OPTION>																								 <OPTION value="blueviolet">     
+  Blue-Violet     </OPTION>																								 <OPTION value="brown">  
+  Brown   </OPTION>																								 <OPTION value="burlywood">      
+  Burlywood       </OPTION>																								 <OPTION value="cadetblue">   
+     Cadet Blue      </OPTION>																								 <OPTION value="chartreuse"> 
+      Chartreuse      </OPTION>																								 <OPTION value="chocolate"> 
+       Chocolate       </OPTION>																								 <OPTION value="coral">  
+  Coral   </OPTION>																								 <OPTION value="cornflowerblue"> 
+  Cornflower Blue </OPTION>																								 <OPTION value="cornsilk">    
+     Cornsilk        </OPTION>																								 <OPTION value="crimson">  
+        Crimson </OPTION>																								 <OPTION value="cyan">   Cyan   
+   </OPTION>																								 <OPTION value="darkblue">       Dark Blue   
+      </OPTION>																								 <OPTION value="darkcyan">       Dark 
+  Cyan       </OPTION>																								 <OPTION value="darkgoldenrod">  
+  Dark Goldenrod  </OPTION>																								 <OPTION value="darkgray">    
+     Dark Gray       </OPTION>																								 <OPTION 
+  value="darkgreen">      Dark Green      </OPTION>																		
+  						 <OPTION value="darkkhaki">      Dark Khaki      </OPTION>												
+  												 <OPTION value="darkmagenta">    Dark Magenta    </OPTION>						
+  																		 <OPTION value="darkolivegreen"> Dark Olive-Green        
+  </OPTION>																								 <OPTION value="darkorange">     Dark Orange  
+     </OPTION>																								 <OPTION value="darkorchid">     Dark 
+  Orchid     </OPTION>																								 <OPTION value="darkred">        
+  Dark Red        </OPTION>																								 <OPTION value="darksalmon">  
+     Dark Salmon     </OPTION>																								 <OPTION value="darkseagreen"> 
+    Dark Sea Green  </OPTION>																								 <OPTION value="darkslateblue"> 
+   Dark Slate Blue </OPTION>																								 <OPTION value="darkslategray"> 
+   Dark Slate Gray </OPTION>																								 <OPTION value="darkturquoise"> 
+   Dark Turquoise  </OPTION>																								 <OPTION value="darkviolet"> 
+      Dark Violet     </OPTION>																								 <OPTION 
+  value="deeppink">       Deep Pink       </OPTION>																		
+  						 <OPTION value="deepskyblue">    Deep Sky Blue   </OPTION>												
+  												 <OPTION value="dimgray">        Dim Gray        </OPTION>						
+  																		 <OPTION value="dodgerblue">     Dodger Blue     </OPTION>
+  																								 <OPTION value="firebrick">      Firebrick       
+  </OPTION>																								 <OPTION value="floralwhite">    Floral White 
+     </OPTION>																								 <OPTION value="forestgreen">    Forest 
+  Green    </OPTION>																								 <OPTION value="fuchsia">        
+  Fuchsia </OPTION>																								 <OPTION value="gainsboro">      
+  Gainsboro       </OPTION>																								 <OPTION value="ghostwhite">  
+     Ghost White     </OPTION>																								 <OPTION value="gold">   
+  Gold    </OPTION>																								 <OPTION value="goldenrod">      
+  Goldenrod       </OPTION>																								 <OPTION value="gray">   Gray 
+     </OPTION>																								 <OPTION value="green">  Green   </OPTION>
+  																								 <OPTION value="greenyellow">    Green-Yellow    
+  </OPTION>																								 <OPTION value="honeydew">       Honeydew     
+     </OPTION>																								 <OPTION value="hotpink">        Hot Pink  
+        </OPTION>																								 <OPTION value="indianred">      Indian 
+  Red      </OPTION>																								 <OPTION value="indigo"> Indigo  
+  </OPTION>																								 <OPTION value="ivory">  Ivory   </OPTION>
+  																								 <OPTION value="khaki">  Khaki   </OPTION>												
+  												 <OPTION value="lavender">       Lavender        </OPTION>						
+  																		 <OPTION value="lavenderblush">  Lavender-Blush  </OPTION>
+  																								 <OPTION value="lawngreen">      Lawn Green      
+  </OPTION>																								 <OPTION value="lemonchiffon">   Lemon 
+  Chiffon   </OPTION>																								 <OPTION value="lightblue">      
+  Light Blue      </OPTION>																								 <OPTION value="lightcoral">  
+     Light Coral     </OPTION>																								 <OPTION 
+  value="lightcyan">      Light Cyan      </OPTION>																		
+  						 <OPTION value="lightgoldenrodyellow">   Light Goldenrod Yellow  
+  </OPTION>																								 <OPTION value="lightgreen">     Light Green  
+     </OPTION>																								 <OPTION value="lightgrey">      Light 
+  Grey      </OPTION>																								 <OPTION value="lightpink">      
+  Light Pink      </OPTION>																								 <OPTION value="lightsalmon"> 
+     Light Salmon    </OPTION>																								 <OPTION value="lightseagreen"> 
+   Light Sea Green </OPTION>																								 <OPTION value="lightskyblue"> 
+    Light Sky Blue  </OPTION>																								 <OPTION value="lightslategray"> 
+  Light Slate Gray        </OPTION>																								 <OPTION value="lightsteelblue"> 
+  Light Steel Blue        </OPTION>																								 <OPTION value="lightyellow"> 
+     Light Yellow    </OPTION>																								 <OPTION value="lime">   
+  Lime    </OPTION>																								 <OPTION value="limegreen">      
+  Lime-Green      </OPTION>																								 <OPTION value="linen">  
+  Linen   </OPTION>																								 <OPTION value="magenta">        
+  Magenta </OPTION>																								 <OPTION value="maroon"> Maroon  
+  </OPTION>																								 <OPTION value="mediumaquamarine">       
+  Medium Aquamarine       </OPTION>																								 <OPTION value="mediumblue"> 
+      Medium Blue     </OPTION>																								 <OPTION value="mediumorchid"> 
+    Medium Orchid   </OPTION>																								 <OPTION value="mediumpurple"> 
+    Medium Purple   </OPTION>																								 <OPTION value="mediumseagreen"> 
+  Medium Sea Green        </OPTION>																								 <OPTION value="mediumslateblue"> 
+         Medium Slate Blue       </OPTION>																								 <OPTION 
+  value="mediumspringgreen">      Medium Spring Green     </OPTION>												
+  												 <OPTION value="mediumturquoise">        Medium Turquoise        
+  </OPTION>																								 <OPTION value="mediumvioletred">        
+  Medium Violet-Red       </OPTION>																								 <OPTION value="midnightblue"> 
+    Midnight Blue   </OPTION>																								 <OPTION value="mintcream"> 
+       Mint Cream      </OPTION>																								 <OPTION value="mistyrose"> 
+       Misty Rose      </OPTION>																								 <OPTION value="moccasin"> 
+        Moccasin        </OPTION>																								 <OPTION value="navajowhite"> 
+     Navajo White    </OPTION>																								 <OPTION value="navy">   
+  Navy    </OPTION>																								 <OPTION value="oldlace">        Old 
+  Lace        </OPTION>																								 <OPTION value="olive">  Olive   
+  </OPTION>																								 <OPTION value="olivedrab">      Olive Drab   
+     </OPTION>																								 <OPTION value="orange"> Orange  </OPTION>
+  																								 <OPTION value="orangered">      Orange-Red      
+  </OPTION>																								 <OPTION value="orchid"> Orchid  </OPTION>
+  																								 <OPTION value="palegoldenrod">  Pale Goldenrod  
+  </OPTION>																								 <OPTION value="palegreen">      Pale Green   
+     </OPTION>																								 <OPTION value="paleturquoise">  Pale 
+  Turquoise  </OPTION>																								 <OPTION value="palevioletred">  
+  Pale Violet-Red </OPTION>																								 <OPTION value="papayawhip">  
+     Papaya Whip     </OPTION>																								 <OPTION 
+  value="peachpuff">      Peach Puff      </OPTION>																		
+  						 <OPTION value="peru">   Peru    </OPTION>																		
+  						 <OPTION value="pink">   Pink    </OPTION>																		
+  						 <OPTION value="plum">   Plum    </OPTION>																		
+  						 <OPTION value="powderblue">     Powder Blue     </OPTION>												
+  												 <OPTION value="purple"> Purple  </OPTION>																		
+  						 <OPTION value="red">    Red     </OPTION>																		
+  						 <OPTION value="rosybrown">      Rosy Brown      </OPTION>												
+  												 <OPTION value="royalblue">      Royal Blue      </OPTION>						
+  																		 <OPTION value="saddlebrown">    Saddle Brown    </OPTION>
+  																								 <OPTION value="salmon"> Salmon  </OPTION>												
+  												 <OPTION value="sandybrown">     Sandy Brown     </OPTION>						
+  																		 <OPTION value="seagreen">       Sea Green       </OPTION>
+  																								 <OPTION value="seashell">       Seashell        
+  </OPTION>																								 <OPTION value="sienna"> Sienna  </OPTION>
+  																								 <OPTION value="silver"> Silver  </OPTION>												
+  												 <OPTION value="skyblue">        Sky Blue        </OPTION>						
+  																		 <OPTION value="slateblue">      Slate Blue      </OPTION>
+  																								 <OPTION value="slategray">      Slate Gray      
+  </OPTION>																								 <OPTION value="snow">   Snow    </OPTION>
+  																								 <OPTION value="springgreen">    Spring Green    
+  </OPTION>																								 <OPTION value="steelblue">      Steel Blue   
+     </OPTION>																								 <OPTION value="tan">    Tan     </OPTION>
+  																								 <OPTION value="teal">   Teal    </OPTION>												
+  												 <OPTION value="thistle">        Thistle </OPTION>												
+  												 <OPTION value="tomato"> Tomato  </OPTION>																		
+  						 <OPTION value="turquoise">      Turquoise       </OPTION>												
+  												 <OPTION value="violet"> Violet  </OPTION>																		
+  						 <OPTION value="wheat">  Wheat   </OPTION>																		
+  						 <OPTION value="white">  White   </OPTION>																		
+  						 <OPTION value="whitesmoke">     White Smoke     </OPTION>												
+  												 <OPTION value="yellow"> Yellow  </OPTION>																		
+  						 <OPTION value="yellowgreen">    Yellow-Green    </OPTION>												
+  												 </SELECT></B>&nbsp;													<B><INPUT name="color" class="buttn" onclick="getColor(this.form)" type="button" value="Convert to Hex / RGB"></B>
+													 
+<P><B>RGB:</B>&nbsp;<FONT color="red" face="verdana" size="2"><B>Red</B> 
+<INPUT name="red" type="text" size="4" value="255"></FONT> <FONT color="green" 
+face="verdana" size="2"><B>Green</B> 
+<INPUT name="green" type="text" size="3" value="255"></FONT> <FONT color="blue" 
+face="verdana" size="2"><B>Blue</B> 
+<INPUT name="blue" type="text" size="4" value="255"></FONT> <B><INPUT name="convert" class="buttn" onclick="getHex(this.form)" type="button" value="Convert to Hex"></B>
+											        </P>
+<P><B>HEX:</B>&nbsp;<INPUT name="hexadecimal" type="text" size="8" value="#ffffff">&nbsp;
+<B><INPUT name="Convert RGB" class="buttn" onclick="getRGB(this.form)" type="button" value="Convert to RGB"></B>
+										       </P></DIV></DIV></DIV>
+<P>Note: the buttons are not all integrated, they work but not in all directions
+ and you must reload at times. </P></DIV><!-- inner box starts -->								
+																	  <!-- inner box ends -->                               
+</DIV></FORM></DIV><!-- pagination starts -->							 
+<DIV class="pagination"><A class="home_button" href="file:///C:/Users/mrtimd/AppData/Local/Temp/index.html">Home</A><BR 
+class="spacer"></DIV><!-- pagination ends -->						  					   </DIV><!-- right box ends -->
+						 <BR class="spacer"></DIV><!-- right box ends -->						 <BR 
+class="spacer"></DIV></DIV><!-- right container ends -->	 <BR 
+class="spacer"></DIV><!-- main container ends --> <!--?php include('footer.php'); ?--></BODY></HTML>
