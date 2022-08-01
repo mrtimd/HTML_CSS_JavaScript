@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Click a light bulb to turn on/off the first light.</p>
+
+<img id="myImage" onclick="changeImage()" src="pic_bulboff.gif" width="70" height="110">
+
+<img id="myImage" onclick="changeImage()" src="pic_bulboff.gif" width="100" height="180">
+
+<img id="myImage" onclick="changeImage()" src="pic_bulboff.gif" width="70" height="110">
+
+<div>
+<button onclick="BulbsOn()">Turn On all bulbs</button>
+<br>
+<button onclick="BulbsOff()">Turn Off all bulbs</button>
+<br>
+<button onclick="TextColorChange()">Change text color</button>
+</div>
+
+<script>
+function changeImage() {
+  var image = document.getElementById('myImage');
+  if (image.src.match("bulbon")) {
+    image.src = "pic_bulboff.gif";
+  } else {
+    image.src = "pic_bulbon.gif";
+  }
+}
+</script>
+
+<script>
+function BulbsOn() {
+  var myNodelist = document.querySelectorAll("img");
+  var i;
+  for (i = 0; i < myNodelist.length; i++) {
+    myNodelist[i].src= "pic_bulbon.gif";
+  }
+}
+</script>
+
+<script>
+function BulbsOff() {
+  var myNodelist = document.querySelectorAll("img");
+  var i;
+  for (i = 0; i < myNodelist.length; i++) {
+    myNodelist[i].src= "pic_bulboff.gif";
+  }
+}
+</script>
+<script>
+
+function TextColorChange() {
+  var myNodelist = document.querySelectorAll("p");
+  var i;
+  for (i = 0; i < myNodelist.length; i++) {
+    myNodelist[i].style.color = "red";
+  }
+}
+</script>
+
+</body>
+</html>
