@@ -1,5 +1,5 @@
 # HTML_CSS_JavaScript
-General Notes for UI and UX
+General Notes for UI and UX - some are broken and are meant to be fixed to use... 
 
 FIles are generally intended to show interaction with JavaScript and various odd ball examples like;
 
