@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSON from XHR</title>
+</head>
+<body>
+
+    <h2>Fetch a JSON file with XMLHttpRequest</h2>
+    <p id="demo"></p>
+
+    <script>
+const xmlhttp = new XMLHttpRequest();
+xmlhttp.onload = function() {
+  const myObj = JSON.parse(this.responseText);
+  document.getElementById("demo").innerHTML = myObj.name;
+}
+        xmlhttp.open("GET", "../wwwroot/xternal_content/json_demo.txt");
+xmlhttp.send();
+    </script>
+    <div>
+        <a href="https://www.w3schools.com/js/tryit.asp?filename=tryjson_ajax">Try it W3</a>
+    </div>
+</body>
+</html>

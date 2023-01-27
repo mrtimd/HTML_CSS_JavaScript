@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CSS_DropDown_Nav_JSON</title>
+<style>
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a, .dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+    background-color: red;
+}
+
+li.dropdown {
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+table,th,td {
+  border : 1px solid black;
+  border-collapse: collapse;
+}
+th,td {
+  padding: 5px;
+}
+</style>
+</head>
+<body>
+
+<ul>
+
+  
+    <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">Home</a>
+    <div class="dropdown-content" id="nav0">
+      <a href="#">Home</a>
+      <a href="#">Link 2</a>
+      <a href="#">Link 3</a>
+    </div>
+  
+    <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">News</a>
+    <div class="dropdown-content" id="nav1">
+      <a href="#">News</a>
+      <a href="#">Link 2</a>
+      <a href="#">Link 3</a>
+    </div>
+	
+  <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">DD Left</a>
+    <div class="dropdown-content" id="nav2">
+      <a href="#">DD Left</a>
+      <a href="#">Link 2</a>
+      <a href="#">Link 3</a>
+    </div>
+  </li>
+  
+    <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">DD Right</a>
+    <div class="dropdown-content" id="nav3">
+      <a href="#">DD Right</a>
+      <a href="#">Link 2</a>
+      <a href="#">Link 3</a>
+    </div>
+  </li>
+  
+    <li><a href="#home">Contact</a></li>
+</ul>
+
+<p>Hover over the "Dropdown" link to see the dropdown menu.</p>
+<script>
+
+var xmlhttp = new XMLHttpRequest();
+var url = "CSS_Dropdown_Nav_Home.txt";
+
+xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var myArr0 = JSON.parse(this.responseText);
+        myFunction0(myArr0);
+    }
+};
+xmlhttp.open("GET", url, true);
+xmlhttp.send();
+
+function myFunction0(arr) {
+    var out = "";
+    var i;
+    for(i = 0; i < arr.length; i++) {
+        out += '<a href="' + arr[i].url + '">' + 
+        arr[i].display + '</a><br>';
+    }
+    document.getElementById("nav0").innerHTML = out;
+}
+</script>
+<script>
+
+var xmlhttp = new XMLHttpRequest();
+var url = "CSS_Dropdown_Nav_News.txt";
+
+xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var myArr1 = JSON.parse(this.responseText);
+        myFunction1(myArr1);
+    }
+};
+xmlhttp.open("GET", url, true);
+xmlhttp.send();
+
+function myFunction1(arr) {
+    var out = "";
+    var i;
+    for(i = 0; i < arr.length; i++) {
+        out += '<a href="' + arr[i].url + '">' + 
+        arr[i].display + '</a><br>';
+    }
+    document.getElementById("nav1").innerHTML = out;
+}
+</script>
+
+<script>
+
+var xmlhttp = new XMLHttpRequest();
+var url = "CSS_Dropdown_Nav_DD_Left.txt";
+
+xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var myArr2 = JSON.parse(this.responseText);
+        myFunction2(myArr2);
+    }
+};
+xmlhttp.open("GET", url, true);
+xmlhttp.send();
+
+function myFunction2(arr) {
+    var out = "";
+    var i;
+    for(i = 0; i < arr.length; i++) {
+        out += '<a href="' + arr[i].url + '">' + 
+        arr[i].display + '</a><br>';
+    }
+    document.getElementById("nav2").innerHTML = out;
+}
+</script>
+
+
+<script>
+var xmlhttp = new XMLHttpRequest();
+var url = "CSS_Dropdown_Nav_DD_Right.txt";
+
+xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var myArr3 = JSON.parse(this.responseText);
+        myFunction3(myArr3);
+    }
+};
+xmlhttp.open("GET", url, true);
+xmlhttp.send();
+
+function myFunction(arr) {
+    var out = "";
+    var i;
+    for(i = 0; i < arr.length; i++) {
+        out += '<a href="' + arr[i].url + '">' + 
+        arr[i].display + '</a><br>';
+    }
+    document.getElementById("nav3").innerHTML = out;
+}
+</script>
+<iframe src="demo_iframe.htm" name="iframe_a" height="800px" width="100%" title="Iframe Example"></iframe>
+
+<p><a href="https://www.mediadreamsllc.com" target="iframe_a">Media Dreams LLC</a></p>
+<a href="#" onClick="alert('Hi');">Click</a> 
+</body>
+</html>

@@ -1,0 +1,34 @@
+snippets file - re usable code
+
+My glue between files - 
+
+create a hyper link 
+<a href="https://www.w3schools.com/">Visit W3Schools.com!</a>
+
+link html file to javascript file
+<script src="myScript.js"></script>
+
+<script src="https://www.w3schools.com/js/myScript.js"></script>
+
+
+link html to css file
+<link rel="stylesheet" href="mystyle.css">
+
+
+http://127.0.0.1:5500/calctim.html
+
+created a folder - called JSClient
+
+created 3 files - html, css, js
+
+moved the code to the correct file
+
+
+added the link in the  head area
+
+---create the iframe
+<iframe src="demo_iframe.htm" style="border:none;" title="Iframe Example"></iframe>
+
+<iframe src="demo_iframe.htm" name="iframe_a" height="300px" width="100%" title="Iframe Example"></iframe>
+
+<p><a href="https://www.w3schools.com" target="iframe_a">W3Schools.com</a></p>

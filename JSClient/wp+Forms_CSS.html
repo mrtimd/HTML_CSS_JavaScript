@@ -1,0 +1,50 @@
+<html>
+<head>
+<title>Form Opens New Window</title>
+<script LANGUAGE="JavaScript" type="text/javascript">
+function display() {
+DispWin = window.open('','NewWin', 'toolbar=no,status=no,width=800,height=600')
+
+message = "<body>";
+message += "<table border=1 width=100%>";
+message += "<tr>";
+message += "<th colspan=2 align=center><font face=stencil color=black><h1>Results</h1><h4>one</h4></font>";
+message += "</th>";
+message += "</tr>";
+
+message += "<td width=50% align=left>";
+message += "<ul><li><b><font face=calibri color=red>NAME:</font></b> " +         document.form1.yourname.value + "</UL>"  
+message += "</td>"; 
+
+message += "<td width=50% align=left>";  
+
+message += "<li><b>PHONE: </b>" + document.form1.phone.value + "</ul>";
+message += "</td>";
+message += "</table>";
+message += "<body>";
+
+DispWin.document.write(message);
+DispWin.document.body.style.cssText = 'color:#blue;'; 
+}
+</script>
+</head>
+<body>
+<h1>Form Example</h1>
+Enter the following information: <p>
+<fieldset>
+<form name="form1">
+<p><b>Name:</b> <input TYPE="TEXT" SIZE="20" NAME="yourname">
+</p>
+<p><b>Address:</b> <input TYPE="TEXT" SIZE="30" NAME="address">
+</p>
+<p><b>Phone: </b> <input TYPE="TEXT" SIZE="15" NAME="phone">
+</p>
+Clicking the Display button calls a function called "display" that uses window.open to open a new browser window with CSS styles around content. 
+<p>
+The CSS styles and DOM elements are added when the "message" returned to the browser...View source to see the javascript...
+<p>Self contained - does not call external file..<p>
+<p><input TYPE="BUTTON" VALUE="Display" onClick="display();"></p>
+</form>
+</fieldset>
+</body>
+</html>
