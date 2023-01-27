@@ -9,4 +9,6 @@ FIles are generally intended to show interaction with JavaScript and various odd
 
 Why do these things - Learn - Grow - Experiment
 
+Links for some in https://github.com/mrtimd/HTML_CSS_JavaScript/blob/main/Mini%20JavaScript%20C.R.U.D.%20Labs.pdf 
+
 mrtimd
