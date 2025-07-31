@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple CRUD with Local Storage</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    .item { margin-bottom: 10px; }
+    .hidden { display: none; }
+    input[type="text"] { margin-right: 10px; }
+  </style>
+</head>
+<body>
+  <h2>Simple CRUD App</h2>
+  <p>Uses Local Storage as the Data Store.</p>
+  <h3>Add New Item</h3>
+  <input type="text" id="newItem" placeholder="Enter new item" />
+  <button onclick="addItem()">Add</button>
+
+  <h3>Stored Items</h3>
+  <button onclick="showAll()">Show All Items</button>
+  <div id="list"></div>
+
+  <div id="editForm" class="hidden">
+    <h3>Edit Item</h3>
+    <input type="text" id="editValue" />
+    <button onclick="updateItem()">Update</button>
+  </div>
+
+  <script>
+    const storageKey = 'myItems';
+    let currentEditIndex = null;
+
+    // Initialize with 3 values
+    window.onload = () => {
+      if (!localStorage.getItem(storageKey)) {
+        const initialData = ['Apple', 'Banana', 'Cherry'];
+        localStorage.setItem(storageKey, JSON.stringify(initialData));
+      }
+    };
+
+    function showAll() {
+      const listDiv = document.getElementById('list');
+      listDiv.innerHTML = '';
+      const items = JSON.parse(localStorage.getItem(storageKey)) || [];
+
+      items.forEach((item, index) => {
+        const div = document.createElement('div');
+        div.className = 'item';
+        div.innerHTML = `
+          ${item} 
+          <button onclick="editItem(${index})">Edit</button>
+          <button onclick="deleteItem(${index})">Delete</button>
+        `;
+        listDiv.appendChild(div);
+      });
+    }
+
+    function addItem() {
+      const newItem = document.getElementById('newItem').value.trim();
+      if (newItem) {
+        const items = JSON.parse(localStorage.getItem(storageKey)) || [];
+        items.push(newItem);
+        localStorage.setItem(storageKey, JSON.stringify(items));
+        document.getElementById('newItem').value = '';
+        showAll();
+      }
+    }
+
+    function editItem(index) {
+      const items = JSON.parse(localStorage.getItem(storageKey));
+      document.getElementById('editValue').value = items[index];
+      currentEditIndex = index;
+      document.getElementById('editForm').classList.remove('hidden');
+    }
+
+    function updateItem() {
+      const newValue = document.getElementById('editValue').value.trim();
+      if (newValue) {
+        const items = JSON.parse(localStorage.getItem(storageKey));
+        items[currentEditIndex] = newValue;
+        localStorage.setItem(storageKey, JSON.stringify(items));
+        document.getElementById('editForm').classList.add('hidden');
+        showAll();
+      }
+    }
+
+    function deleteItem(index) {
+      const items = JSON.parse(localStorage.getItem(storageKey));
+      items.splice(index, 1);
+      localStorage.setItem(storageKey, JSON.stringify(items));
+      showAll();
+    }
+  </script>
+</body>
+</html>
