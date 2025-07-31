@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Add the stylesheet -->
+    <link id="theme" rel="stylesheet" 
+          type="text/css" href="light.css" />
+</head>
+
+<body>
+    <h2>Changing Style Sheets</h2>
+    <br />
+    Click the button below to switch 
+  	between light and dark themes.<br />
+
+    <button onclick="toggleTheme()">Switch</button>
+    <script>
+        function toggleTheme() {
+            // Select the <link> element
+            let theme = document.getElementById('theme');
+
+            // Toggle between light.css and dark.css
+            if (theme.getAttribute('href') == 'light.css') {
+                theme.setAttribute('href', 'dark.css');
+            } else {
+                theme.setAttribute('href', 'light.css');
+            }
+        }
+    </script>
+</body>
+
+</html>
